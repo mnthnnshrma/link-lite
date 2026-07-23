@@ -97,7 +97,10 @@ function MyLinks() {
 
   return (
     <div className="my-links-page">
-      <h1>My Links</h1>
+      <div className="modal-header" style={{ marginBottom: '24px' }}>
+        <h1>My Links</h1>
+        <button className="navbar-btn" onClick={() => navigate('/')}>Back to Home</button>
+      </div>
 
       {links.length === 0 ? (
         <p className="empty-state">You haven&apos;t shortened any links yet.</p>
