@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "https://your-backend.onrender.com/api/$1" },
+    { "source": "/login", "destination": "/index.html" },
+    { "source": "/signup", "destination": "/index.html" },
+    { "source": "/my-links", "destination": "/index.html" },
+    { "source": "/stats/(.*)", "destination": "/index.html" },
+    { "source": "/(.*)", "destination": "https://your-backend.onrender.com/$1" }
+  ]
+}
