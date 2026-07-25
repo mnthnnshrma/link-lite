@@ -53,7 +53,11 @@ router.get('/resolve/:code', redirectLimiter, async (req, res, next) => {
       (async () => {
         try {
           const userAgentString = req.headers['user-agent'] || '';
-          const referrer = req.headers['referer'] || req.headers['referrer'] || '';
+          let referrer = req.query.ref !== undefined ? req.query.ref : (req.headers['referer'] || req.headers['referrer'] || '');
+          // If the referrer is our own internal app domain or localhost, store as empty string so it displays as 'Direct'
+          if (referrer && (referrer.includes('link-lite') || referrer.includes('localhost') || referrer.includes('onrender.com') || referrer.includes('vercel.app'))) {
+            referrer = '';
+          }
 
           const parser = new UAParser(userAgentString);
           const parsed = parser.getResult();

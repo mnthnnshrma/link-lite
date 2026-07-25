@@ -14,7 +14,9 @@ function Redirect() {
     const fetchDestination = async () => {
       try {
         const baseURL = import.meta.env.VITE_API_URL || '';
-        const res = await axios.get(`${baseURL}/api/urls/resolve/${code}`);
+        const res = await axios.get(`${baseURL}/api/urls/resolve/${code}`, {
+          params: { ref: document.referrer || '' },
+        });
         setDestination(res.data.originalUrl);
       } catch (err) {
         if (err.response && err.response.status === 404) {
