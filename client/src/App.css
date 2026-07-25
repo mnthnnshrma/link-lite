@@ -791,6 +791,16 @@
   color: var(--text);
 }
 
+.copy-icon-btn.copied {
+  color: var(--success);
+}
+
+.copy-btn.copied {
+  background: var(--success) !important;
+  color: #fff !important;
+  border-color: var(--success) !important;
+}
+
 /* ── Profile Dropdown ── */
 .profile-container {
   position: relative;

@@ -9,6 +9,7 @@ function MyLinks() {
   const [links, setLinks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [copiedId, setCopiedId] = useState(null);
   
   // Edit state
   const [editingId, setEditingId] = useState(null);
@@ -42,6 +43,8 @@ function MyLinks() {
   const handleCopy = async (id, text) => {
     try {
       await navigator.clipboard.writeText(text);
+      setCopiedId(id);
+      setTimeout(() => setCopiedId(null), 2000);
       toast.success('Copied to clipboard!');
     } catch {
       toast.error('Failed to copy to clipboard.');
@@ -159,14 +162,20 @@ function MyLinks() {
                       {new Date(link.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                     </span>
                     <button
-                      className="copy-icon-btn"
+                      className={`copy-icon-btn ${copiedId === link._id ? 'copied' : ''}`}
                       onClick={() => handleCopy(link._id, `${window.location.origin}/${link.shortCode}`)}
-                      title="Copy Link"
+                      title={copiedId === link._id ? "Copied!" : "Copy Link"}
                     >
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
-                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
+                      {copiedId === link._id ? (
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--success)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ transform: 'scale(1.1)', transition: 'transform 0.2s ease' }}>
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      ) : (
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
+                          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                      )}
                     </button>
                     <div className="menu-container" onClick={(e) => e.stopPropagation()}>
                       <button 
