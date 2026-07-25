@@ -22,7 +22,7 @@
     },
     {
       "source": "/(.*)",
-      "destination": "https://link-lite.onrender.com/$1"
+      "destination": "/index.html"
     }
   ]
 }

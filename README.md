@@ -66,6 +66,13 @@ A high-performance, feature-rich URL Shortener application built with **MongoDB*
    - Sleek **Toast Notifications** for immediate, non-intrusive user feedback (copying, auth, errors).
    - Auto-detects user's system preferences on first visit.
 
+7. **Branded Interstitial Redirect Page**
+   - Intercepts shortlink visits (`/:code`) to display a sleek, glassmorphic landing page before redirecting.
+   - Dynamic 4-second countdown paired with an animated gradient progress bar.
+   - Prominent **"Skip / Continue Now"** button for instant redirection.
+   - Transparently displays destination URL for user verification and security.
+   - Includes custom branding signature: `"⚡ Powered by SharmaG"`.
+
 ---
 
 ## 📁 Project Structure
@@ -76,7 +83,7 @@ url-shortener/
 │   ├── src/
 │   │   ├── components/         # Navbar, Profile Dropdown
 │   │   ├── context/            # AuthContext (cookie-based state)
-│   │   ├── pages/              # Home, Login, Signup, MyLinks, Stats
+│   │   ├── pages/              # Home, Login, Signup, MyLinks, Stats, Redirect
 │   │   ├── App.jsx             # Main Router & Loading Gate
 │   │   ├── App.css             # Vanilla CSS Design System
 │   │   └── index.css           # CSS Variables & Global Reset

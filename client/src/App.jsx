@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import MyLinks from './pages/MyLinks';
 import Stats from './pages/Stats';
+import Redirect from './pages/Redirect';
 import './App.css';
 
 function AppContent() {
@@ -38,6 +39,7 @@ function AppContent() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/my-links" element={<MyLinks />} />
           <Route path="/stats/:shortCode" element={<Stats />} />
+          <Route path="/:code" element={<Redirect />} />
         </Routes>
       </main>
     </>
